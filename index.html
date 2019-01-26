@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>topbartest</title>
+    <link rel="stylesheet" href="./style.css" type="text/css">
+    <link rel="stylesheet" href="./loading.css" type="text/css">
+    <script src='//at.alicdn.com/t/font_1000961_8ulhi2snt3h.js'></script>
+    
+    <style type="text/css">
+        .startLoad{
+            display: none;
+        }
+        .startLoad.active{
+            width: 100%;height:100%;background-color: white;
+            position: fixed;
+            top:0;left:0;
+            z-index: 1;
+            display: flex;
+            justify-content: center;align-items: center;
+
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div id="startLoad" class="startLoad active">
+        <div class="loading"></div>
+    </div>
+    
+    <!-- 导航条 -->
+    <div class="topNavBar clearfix">
+        <div class="logo">
+            <span class="rs">HSY</span><span class="card">resume</span>
+        </div>
+        <nav>
+            <ul class="clearfix">
+                <li><a href="#">关于</a></li>
+                <li><a href="#">技能</a></li>
+                <li><a href="#">作品</a></li>
+                <li><a href="#">博客</a></li>
+                <li><a href="#">日历</a></li>
+                <li><a href="#">联系方式</a></li>
+                <li><a href="#">其他</a></li>
+            </ul>
+        </nav>
+    </div>
+    <!-- 背景图 -->
+    <div class="banner">
+        <div class="mask"></div>
+    </div>
+    <!-- 个人信息 -->
+    <div class="userCard clearfix">
+        <div class="add clearfix">
+            <div class="picture">
+                <img src="./img/avatar.jpg" alt="头像" style="width:299px;height:330px;">
+            </div>
+            <div class="profile">
+                <span class="welcome">I'm in 上海
+                    <span class="triangle"></span>
+                </span>
+
+                <div class="text">
+                    <p style="font-size: 24px;font-family: Siyuan-L;color:rgb(64,64,64)">黄淑艳</p>
+                    <div class="call" style="position: relative;height:36px;margin-top: 6px;color: rgb(110, 110, 110)">
+                        <svg id="phone" class="icon" aria-hidden="true">
+                            <use xlink:href="#icon-iconzhengli-"></use>
+                        </svg>
+                        <span style="font-size: 30px;line-height: 36px;margin-left:30px;font-family: Siyuan-L;font-weight: 100;">18705178410</span>
+                    </div>
+                    <hr>
+                    <dl style="font-size: 16px;font-family: Siyuan-EL;color:rgb(64,64,64)">
+                        <dd>前端设计师</dd>
+                        <dd>微信:</dd>
+                        <dd>hsy1234567</dd>
+                        <dd>邮箱:</dd>
+                        <dd>squirrel@1234567.com</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        <footer class="media">
+            <a href="#">
+                <img src="./img/zool.svg" style="fill:white;width: 36px;height: 36px;vertical-align: -0.2em;">
+            </a>
+            <a href="#">
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-github1"></use>
+                </svg>
+            </a>
+            <a href="#">
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-dribbble"></use>
+                </svg>
+            </a>
+            
+        </footer>
+    </div>
+    <!-- 下载按钮 -->
+    <p class="button-wrapper" style="text-align: center;">
+        <a class="button" href="./pic.pdf" target="_blank" download>我的简历 下载</a>
+    </p>
+    <p class="content-me">
+        Hello! I’m Robert Smith. Senior Web Developer specializing in front end development. Experienced with all
+        stages of the development cycle for dynamic web projects. Well-versed in numerous programming languages
+        including JavaScript, SQL, and C. Stng background in project management and customer relations.
+    </p>
+    <!--  章节介绍 -->
+    <section class='skills'>
+        <p style="font-size: 24px;font-family: Siyuan-L;color:rgb(64,64,64)">软件技能</p>
+        <ol class="clearfix">
+            <li>
+                <h3>HTML 5 &amp; CSS 3 &amp; JavaScript</h3>
+                <div class="progressBar">
+                    <div class="progress"></div>
+                </div>
+            </li>
+            <li>
+                <h3>HTML 5 &amp; CSS 3 &amp; JavaScript</h3>
+                <div class="progressBar">
+                    <div class="progress"></div>
+                </div>
+            </li>
+            <li>
+                <h3>HTML 5 &amp; CSS 3 &amp; JavaScript</h3>
+                <div class="progressBar">
+                    <div class="progress"></div>
+                </div>
+            </li>
+            <li>
+                <h3>HTML 5 &amp; CSS 3 &amp; JavaScript</h3>
+                <div class="progressBar">
+                    <div class="progress" style="width:30%"></div>
+                </div>
+            </li>
+            <li>
+                <h3>HTML 5 &amp; CSS 3 &amp; JavaScript</h3>
+                <div class="progressBar">
+                    <div class="progress"></div>
+                </div>
+            </li>
+            <li>
+                <h3>HTML 5 &amp; CSS 3 &amp; JavaScript</h3>
+                <div class="progressBar">
+                    <div class="progress"></div>
+                </div>
+            </li>
+
+        </ol>
+    </section>
+
+    <section class='portfolio'>
+        <h2>作品集</h2>
+        <nav>
+            <ol class="clearfix">
+                <li id="portfolio1">所有</li>
+                <li id="portfolio2">框架</li>
+                <li id="portfolio3">原生JS&amp;CSS</li>
+            </ol>
+        </nav>
+        <div id="haha" class="bar state-1">
+            <div class="bar-inner"></div>
+        </div>
+
+        <div class="job">
+            <div class="big" style="top:0;left:0;height: 576px;"><img src="./img/photo1.jpg" alt="work1"></div>
+            <div class="small" style="top:0;left:66.5591%;height: 278px;"><img src="./img/photo2.jpg" alt="work2"></div>
+            <div class="small" style="top:297px;left:66.5591%;height: 278px;">
+                <img src="./img/photo3.jpg" alt="work3">
+            </div>
+        </div>
+    </section>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+
+    <script>
+        portfolio1.onclick = function () {
+            haha.className = "bar state-1";
+        }
+        portfolio2.onclick = function () {
+            haha.className = "bar state-2";
+        }
+        portfolio3.onclick = function () {
+            haha.className = "bar state-3";
+        }
+
+
+
+        setTimeout(function(){
+            startLoad.classList.remove('active')
+        },1000)
+        
+
+
+
+
+
+
+
+    </script>
+
+
+</body>
+
+</html>
+
+
+</body>
+
+</html>
