@@ -15,46 +15,79 @@ h1,h2,h3,dl,dd,dt{ font-weight: 300;}
 .media .icon { width: 30px;height: 30px;vertical-align: -0.15em;overflow: hidden;}
 .call #phone { width: 25px;height: 25px;vertical-align: -0.15em;position: absolute;top: 6px;left:-2px;}
 
-
-.topNavBar{ margin-top:33px;position: fixed;top:0;left:0;width: 100%;}
+.topNavBar{
+    padding: 10px 0 10px 0;
+    position: fixed;
+    transition:all 0.7s; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    color:#B7B7B7;
+}
 .topNavBar .logo{
     float:left;
-    /* border: 1px solid red; */
-    width: 100px;
-    height: 30px;
-    margin-left:17px;
-    font-family: Arial;
-    font-weight: 800;
-    font-size: 22px;
-    line-height: 30px;
-}
+    width: 100px;height: 30px;
+    margin-left:17px;font-family: 'Futura';
+    font-weight: 800;font-size: 22px;line-height: 30px;
+    padding-top:5px;
+    padding-bottom:5px; }
 .topNavBar .logo .rs{ color: #f8b500;padding-right: 4px;}
 .topNavBar .logo .card{ color:#9A9DA2;}
 .topNavBar nav{
-    float:right;
-    /* border: 1px solid red; */
-    font-size: 12px;
-    width: 430px;
-    height: 30px;
+    padding-top:4px;
+    padding-bottom:2px; 
 }
-
-.topNavBar nav a{
-    color: rgba(255, 255, 255, 0.7);
-    font-weight: bold;
-    display: inline-block;
-  }
-.topNavBar nav ul>li>a{
+.topNavBar nav>ul>li{
+    float: left;
+    position: relative;
+    margin-left: 17px;
+    margin-right: 17px;
+}
+.topNavBar nav>ul>li>a{
+    font-size: 13px;
+    color: inherit;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-top: 3px solid transparent;
     border-bottom: 3px solid transparent;
+    display: block;
+    /* position: relative; */
+}
+/* .topNavBar nav > ul > li > a:hover {
+  border-bottom: 3px solid #f8b500;
+} */
+.topNavBar.sticky{
+    background-color: white;
+    box-shadow: 0px 7px 18px 3px rgba(71,71,71,0.3);
+    z-index: 1;
+    border: 10px 0;
+    color:rgb(68, 68, 68); 
+}
+.topNavBar nav ul>li>a:hover::after{ 
+    content: '';
+    display: block;
+    position: absolute;
+    top:110%;left: 0;width: 100%;
+    background: #f8b500;
+    height: 3px;
+    animation:menuSlid .5s;
+}
+@keyframes menuSlid{0%{width: 0;}100%{width: 100%;}}
+
+.topNavBar .submenu{
+    display: none;
+    position: absolute;
+    left:0;
+    top:100%;
+}
+.topNavBar .submenu.active{
+    display: block;
+}
+.topNavBar .submenu>li{
+    white-space: nowrap;
 }
 
-.topNavBar nav ul>li>a:hover{
-    border-bottom-color:#f8b500;
-}
-.topNavBar nav ul li{
-    float:left;
-    padding-right: 34px; 
-    line-height: 30px;
-}
+
 .banner{
     background-image: url(./img/rs-cove.jpg);
     height: 515px;

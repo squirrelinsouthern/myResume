@@ -1,26 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>topbartest</title>
+    <title>RESUME</title>
     <link rel="stylesheet" href="./style.css" type="text/css">
     <link rel="stylesheet" href="./loading.css" type="text/css">
     <script src='//at.alicdn.com/t/font_1000961_8ulhi2snt3h.js'></script>
-    
+
     <style type="text/css">
-        .startLoad{
+        .startLoad {
             display: none;
         }
-        .startLoad.active{
-            width: 100%;height:100%;background-color: white;
+
+        .startLoad.active {
+            width: 100%;
+            height: 100%;
+            background-color: white;
             position: fixed;
-            top:0;left:0;
+            top: 0;
+            left: 0;
             z-index: 1;
             display: flex;
-            justify-content: center;align-items: center;
+            justify-content: center;
+            align-items: center;
 
         }
-        
     </style>
 </head>
 
@@ -28,23 +33,45 @@
     <div id="startLoad" class="startLoad active">
         <div class="loading"></div>
     </div>
-    
+
     <!-- 导航条 -->
-    <div class="topNavBar clearfix">
-        <div class="logo">
-            <span class="rs">HSY</span><span class="card">resume</span>
+
+
+
+    <div id="topNavBar" class="topNavBar">
+        <div class="topNavBar-inner clearfix">
+            <div class="logo">
+                <span class="rs">HSY</span><span class="card">resume</span>
+            </div>
+            <nav style="float: right;">
+                <ul>
+                    <li><a href="#">关于</a></li>
+                    <li><a href="#">前端作品</a></li>
+                    <li style="position:relative;">
+                        <a href="#" class="menuTrigger">地产广告作品</a>
+                        <ul class="submenu">
+                            <li>鹏欣一品漫城</li>
+                            <li>保利堂悦</li>
+                            <li>碧桂园凤凰城</li>
+                            <li>云栖山庄</li>
+                        </ul>
+                    </li>
+                    <li style="position:relative;">
+                        <a href="#" class="menuTrigger">微信表情包</a>
+                        <ul class="submenu">
+                            <li>大脸松鼠</li>
+                            <li>扬州大小姐</li>
+                            <li>圣诞祝福</li>
+                        </ul>
+                    </li>
+                    <li><a href="#">商业插画</a></li>
+                    <li><a href="#">联系方式</a></li>
+                    <li><a href="#">其他</a></li>
+                </ul>
+            </nav>
+
         </div>
-        <nav>
-            <ul class="clearfix">
-                <li><a href="#">关于</a></li>
-                <li><a href="#">技能</a></li>
-                <li><a href="#">作品</a></li>
-                <li><a href="#">博客</a></li>
-                <li><a href="#">日历</a></li>
-                <li><a href="#">联系方式</a></li>
-                <li><a href="#">其他</a></li>
-            </ul>
-        </nav>
+
     </div>
     <!-- 背景图 -->
     <div class="banner">
@@ -94,7 +121,7 @@
                     <use xlink:href="#icon-dribbble"></use>
                 </svg>
             </a>
-            
+
         </footer>
     </div>
     <!-- 下载按钮 -->
@@ -171,16 +198,7 @@
             </div>
         </div>
     </section>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+
 
 
     <script>
@@ -194,12 +212,39 @@
             haha.className = "bar state-3";
         }
 
-
-
-        setTimeout(function(){
+        setTimeout(function () {
             startLoad.classList.remove('active')
-        },1000)
-        
+        }, 1000)
+
+        window.onscroll = function () {
+            if (window.scrollY > 0) {
+                topNavBar.classList.add('sticky')
+            } else {
+                topNavBar.classList.remove('sticky')
+            }
+        }
+
+        let aTag = document.getElementsByClassName('menuTrigger')
+        for (let i = 0; i < aTag.length; i++) {
+            aTag[i].onmouseenter = function (x) {
+                let a = x.currentTarget
+                let brother = a.nextSibling
+                while(brother.tagName !== 'UL'){
+                    brother = brother.nextSibling
+                }
+                brother.classList.add('active')
+            }
+            aTag[i].onmouseleave = function (x) {
+                let a = x.currentTarget
+                let brother = a.nextSibling
+                while(brother.tagName !== 'UL'){
+                    brother = brother.nextSibling
+                }
+                brother.classList.remove('active')
+            }
+        }
+
+
 
 
 
