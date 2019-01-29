@@ -11,9 +11,12 @@ h1,h2,h3,dl,dd,dt{ font-weight: 300;}
             font-family:Siyuan-B; src:url('./SourceHanSansCN-Bold.otf');
             font-family:Futura; src:url('./Futura.ttc');
 }
-
 .media .icon { width: 30px;height: 30px;vertical-align: -0.15em;overflow: hidden;}
 .call #phone { width: 25px;height: 25px;vertical-align: -0.15em;position: absolute;top: 6px;left:-2px;}
+
+[data-x].active{
+    outline: 10px solid red;
+}
 
 .topNavBar{
     padding: 10px 0 10px 0;
@@ -53,9 +56,6 @@ h1,h2,h3,dl,dd,dt{ font-weight: 300;}
     display: block;
     /* position: relative; */
 }
-/* .topNavBar nav > ul > li > a:hover {
-  border-bottom: 3px solid #f8b500;
-} */
 .topNavBar.sticky{
     background-color: white;
     box-shadow: 0px 7px 18px 3px rgba(71,71,71,0.3);
@@ -63,11 +63,13 @@ h1,h2,h3,dl,dd,dt{ font-weight: 300;}
     border: 10px 0;
     color:rgb(68, 68, 68); 
 }
-.topNavBar nav ul>li>a:hover::after{ 
+.topNavBar nav ul > li.active > a::after,
+.topNavBar nav ul > li.highlight > a::after{ 
     content: '';
     display: block;
     position: absolute;
-    top:110%;left: 0;width: 100%;
+    top:100%;left: 0;width: 100%;
+    border-radius:1.5px; 
     background: #f8b500;
     height: 3px;
     animation:menuSlid .5s;
@@ -77,14 +79,29 @@ h1,h2,h3,dl,dd,dt{ font-weight: 300;}
 .topNavBar .submenu{
     display: none;
     position: absolute;
-    left:0;
-    top:100%;
+    right:0;
+    top:110%;
+    background-color: white;
+    color:rgb(119, 119, 119);
+    font-size:13px;
+    box-shadow: 0px 7px 18px 3px rgba(130,130,130,0.3);
+    padding: 5px;
 }
-.topNavBar .submenu.active{
+.topNavBar li.active >.submenu{
     display: block;
+    animation: menuSlide 0.5s;
+}
+@keyframes menuSlide{
+    from{
+        margin-right: 30%;
+    }
+    to{
+        margin-right: 0%;
+    }
 }
 .topNavBar .submenu>li{
     white-space: nowrap;
+    padding: 8px 25px;
 }
 
 
@@ -108,8 +125,13 @@ h1,h2,h3,dl,dd,dt{ font-weight: 300;}
     margin-top: -400px;
     box-shadow: 0px 1px 5px 0px rgba(153,153,153,0.52);
 }
-.userCard .picture{
+
+.userCard > .add > .picture {
     float:left;
+    width:299px;
+    height:330px;
+    border-radius:2px;
+    overflow: hidden; 
 }
 .userCard  .profile{
     float:left;
@@ -258,7 +280,7 @@ section.portfolio > h2{
     font-weight: 600;
 }
 section.portfolio li{
-    float: left;
+   
     font-size: 18px;
     display: inline-block;
     margin: 0 10px;

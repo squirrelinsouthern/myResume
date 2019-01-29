@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="./style.css" type="text/css">
     <link rel="stylesheet" href="./loading.css" type="text/css">
     <script src='//at.alicdn.com/t/font_1000961_8ulhi2snt3h.js'></script>
-
+    
     <style type="text/css">
         .startLoad {
             display: none;
@@ -35,20 +35,17 @@
     </div>
 
     <!-- 导航条 -->
-
-
-
     <div id="topNavBar" class="topNavBar">
         <div class="topNavBar-inner clearfix">
             <div class="logo">
                 <span class="rs">HSY</span><span class="card">resume</span>
             </div>
-            <nav style="float: right;">
+            <nav class="menu" style="float: right;">
                 <ul>
-                    <li><a href="#">关于</a></li>
-                    <li><a href="#">前端作品</a></li>
-                    <li style="position:relative;">
-                        <a href="#" class="menuTrigger">地产广告作品</a>
+                    <li class="menuTrigger"><a href="#menuAbout">关于</a></li>
+                    <li class="menuTrigger"><a href="#menuWork">前端作品</a></li>
+                    <li class="menuTrigger" style="position:relative;">
+                        <a href="#menuDichan">地产广告作品</a>
                         <ul class="submenu">
                             <li>鹏欣一品漫城</li>
                             <li>保利堂悦</li>
@@ -56,32 +53,30 @@
                             <li>云栖山庄</li>
                         </ul>
                     </li>
-                    <li style="position:relative;">
-                        <a href="#" class="menuTrigger">微信表情包</a>
+                    <li class="menuTrigger" style="position:relative;">
+                        <a href="#menuBiaoqin">微信表情包</a>
                         <ul class="submenu">
                             <li>大脸松鼠</li>
                             <li>扬州大小姐</li>
                             <li>圣诞祝福</li>
                         </ul>
                     </li>
-                    <li><a href="#">商业插画</a></li>
-                    <li><a href="#">联系方式</a></li>
-                    <li><a href="#">其他</a></li>
+                    <li class="menuTrigger"><a href="#menuHua">商业插画</a></li>
+                    <li class="menuTrigger"><a href="#menuContact">联系方式</a></li>
                 </ul>
             </nav>
-
         </div>
-
     </div>
+
     <!-- 背景图 -->
     <div class="banner">
         <div class="mask"></div>
     </div>
     <!-- 个人信息 -->
-    <div class="userCard clearfix">
+    <div data-x class="userCard clearfix" id="menuAbout">
         <div class="add clearfix">
             <div class="picture">
-                <img src="./img/avatar.jpg" alt="头像" style="width:299px;height:330px;">
+                <img src="./img/avatar.jpg" alt="头像">
             </div>
             <div class="profile">
                 <span class="welcome">I'm in 上海
@@ -129,12 +124,10 @@
         <a class="button" href="./pic.pdf" target="_blank" download>我的简历 下载</a>
     </p>
     <p class="content-me">
-        Hello! I’m Robert Smith. Senior Web Developer specializing in front end development. Experienced with all
-        stages of the development cycle for dynamic web projects. Well-versed in numerous programming languages
-        including JavaScript, SQL, and C. Stng background in project management and customer relations.
+        我是谁 我在哪 我在干啥
     </p>
     <!--  章节介绍 -->
-    <section class='skills'>
+    <section data-x class='skills' id="menuWork">
         <p style="font-size: 24px;font-family: Siyuan-L;color:rgb(64,64,64)">软件技能</p>
         <ol class="clearfix">
             <li>
@@ -177,7 +170,7 @@
         </ol>
     </section>
 
-    <section class='portfolio'>
+    <section data-x class='portfolio' id="menuDichan">
         <h2>作品集</h2>
         <nav>
             <ol class="clearfix">
@@ -200,8 +193,9 @@
     </section>
 
 
-
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/tween.js/17.2.0/Tween.min.js'></script>
     <script>
+        
         portfolio1.onclick = function () {
             haha.className = "bar state-1";
         }
@@ -222,27 +216,79 @@
             } else {
                 topNavBar.classList.remove('sticky')
             }
+            let specialTags = document.querySelectorAll('[data-x]')
+            let minIndex = 0
+            for(let i=1;i<specialTags.length;i++){
+                if(Math.abs(specialTags[i].offsetTop - window.scrollY) < Math.abs(specialTags[minIndex].offsetTop - window.scrollY)){
+                    minIndex = i
+                }
+            }
+
+            // for(let i=0;i<specialTags.length;i++){
+            //     specialTags[i].classList.remove('active')
+            // }
+            // specialTags[minIndex].classList.add('active')
+            let id = specialTags[minIndex].id
+            let a = document.querySelector('a[href="#' + id +'"]')
+            let li = a.parentNode
+            let brothersAndme = li.parentNode.children
+            for(let i=0; i<brothersAndme.length; i++){
+                brothersAndme[i].classList.remove('highlight')
+            }
+            li.classList.add('highlight')
         }
 
-        let aTag = document.getElementsByClassName('menuTrigger')
-        for (let i = 0; i < aTag.length; i++) {
-            aTag[i].onmouseenter = function (x) {
-                let a = x.currentTarget
-                let brother = a.nextSibling
-                while(brother.tagName !== 'UL'){
-                    brother = brother.nextSibling
-                }
-                brother.classList.add('active')
+        let liTags = document.getElementsByClassName('menuTrigger')
+        for (let i = 0; i < liTags.length; i++) {
+            liTags[i].onmouseenter = function (x) {
+                x.currentTarget.classList.add('active')
             }
-            aTag[i].onmouseleave = function (x) {
-                let a = x.currentTarget
-                let brother = a.nextSibling
-                while(brother.tagName !== 'UL'){
-                    brother = brother.nextSibling
-                }
-                brother.classList.remove('active')
+            liTags[i].onmouseleave = function (x) {
+                x.currentTarget.classList.remove('active')
             }
         }
+
+        let aTags = document.querySelectorAll('nav.menu > ul > li > a')
+
+        function animate(time) {
+            requestAnimationFrame(animate);
+            TWEEN.update(time);
+        }
+        requestAnimationFrame(animate);
+
+        for (var i = 0; i < aTags.length; i++) {
+            aTags[i].onclick = function (x) {
+                x.preventDefault()
+                let o = x.currentTarget
+                let href = o.getAttribute('href')
+                let element = document.querySelector(href)
+                let top = element.offsetTop
+                // window.scrollTo(0,top-100)
+
+                let currentTop = window.scrollY
+                let targetTop = top - 100
+                let s = targetTop - currentTop
+                var coords = { y: currentTop };
+                var t = Math.abs((s/100)*300)
+                if(t>500){ t = 500 }
+                var tween = new TWEEN.Tween(coords)
+                    .to({ y: targetTop}, t)
+                    .easing(TWEEN.Easing.Quadratic.InOut)
+                    .onUpdate(function () {
+                        window.scrollTo(0,coords.y)
+                    })
+                    .start();
+
+
+            }
+        }
+
+
+
+
+
+
+
 
 
 
