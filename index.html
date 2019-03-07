@@ -6,8 +6,10 @@
     <title>RESUME</title>
     <link rel="stylesheet" href="./style.css" type="text/css">
     <link rel="stylesheet" href="./loading.css" type="text/css">
+
     <script src='//at.alicdn.com/t/font_1000961_8ulhi2snt3h.js'></script>
-    
+    <script src="//cdn.jsdelivr.net/npm/leancloud-storage@3.11.1/dist/av-min.js"></script>
+
     <style type="text/css">
         .startLoad {
             display: none;
@@ -89,7 +91,8 @@
                         <svg id="phone" class="icon" aria-hidden="true">
                             <use xlink:href="#icon-iconzhengli-"></use>
                         </svg>
-                        <span style="font-size: 30px;line-height: 36px;margin-left:30px;font-family: Siyuan-L;font-weight: 100;">18705178410</span>
+                        <span
+                            style="font-size: 30px;line-height: 36px;margin-left:30px;font-family: Siyuan-L;font-weight: 100;">18705178410</span>
                     </div>
                     <hr>
                     <dl style="font-size: 16px;font-family: Siyuan-EL;color:rgb(64,64,64)">
@@ -182,7 +185,6 @@
         <div id="haha" class="bar state-1">
             <div class="bar-inner"></div>
         </div>
-
         <div class="job">
             <div class="big" style="top:0;left:0;height: 576px;"><img src="./img/photo1.jpg" alt="work1"></div>
             <div class="small" style="top:0;left:66.5591%;height: 278px;"><img src="./img/photo2.jpg" alt="work2"></div>
@@ -192,10 +194,25 @@
         </div>
     </section>
 
+    <div class="leavemessage">
+        <div class="wrapper">
+            <h2>留言</h2>
+            <ol id="messagelist"></ol>
+            <form class="messageform">
+                姓名：<input type="text" name="yourname">
+                内容：<input type="text" name="content">
+                <input type="submit" value="提交" style="color:#f8b500;">
+            </form>
+        </div>
+
+
+    </div>
+
 
     <script src='https://cdnjs.cloudflare.com/ajax/libs/tween.js/17.2.0/Tween.min.js'></script>
+    <script src="./message.js"></script>
     <script>
-        
+
         portfolio1.onclick = function () {
             haha.className = "bar state-1";
         }
@@ -218,8 +235,8 @@
             }
             let specialTags = document.querySelectorAll('[data-x]')
             let minIndex = 0
-            for(let i=1;i<specialTags.length;i++){
-                if(Math.abs(specialTags[i].offsetTop - window.scrollY) < Math.abs(specialTags[minIndex].offsetTop - window.scrollY)){
+            for (let i = 1; i < specialTags.length; i++) {
+                if (Math.abs(specialTags[i].offsetTop - window.scrollY) < Math.abs(specialTags[minIndex].offsetTop - window.scrollY)) {
                     minIndex = i
                 }
             }
@@ -229,10 +246,10 @@
             // }
             // specialTags[minIndex].classList.add('active')
             let id = specialTags[minIndex].id
-            let a = document.querySelector('a[href="#' + id +'"]')
+            let a = document.querySelector('a[href="#' + id + '"]')
             let li = a.parentNode
             let brothersAndme = li.parentNode.children
-            for(let i=0; i<brothersAndme.length; i++){
+            for (let i = 0; i < brothersAndme.length; i++) {
                 brothersAndme[i].classList.remove('highlight')
             }
             li.classList.add('highlight')
@@ -269,13 +286,13 @@
                 let targetTop = top - 100
                 let s = targetTop - currentTop
                 var coords = { y: currentTop };
-                var t = Math.abs((s/100)*300)
-                if(t>500){ t = 500 }
+                var t = Math.abs((s / 100) * 300)
+                if (t > 500) { t = 500 }
                 var tween = new TWEEN.Tween(coords)
-                    .to({ y: targetTop}, t)
+                    .to({ y: targetTop }, t)
                     .easing(TWEEN.Easing.Quadratic.InOut)
                     .onUpdate(function () {
-                        window.scrollTo(0,coords.y)
+                        window.scrollTo(0, coords.y)
                     })
                     .start();
 
